@@ -37,12 +37,13 @@ namespace snake.Core
         private Pixel _boost;
         #endregion
 
-        public Field()
+        private static Field? _instance;
+        private Field() 
         {
             Console.SetWindowSize(FieldWidth, FieldHeight);
             Console.SetBufferSize(FieldWidth, FieldHeight);
         }
-
+        public static Field GetInstance() => _instance ??= new();
         public int Run()
         {
             PrintScore(0);
